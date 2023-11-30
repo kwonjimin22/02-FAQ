@@ -4,23 +4,19 @@ $(function () {
   const $faqA = $('.answer');
   const duration = 300;
 
-  let pluge = true;
-
   // 질문을 클릭했을 때
-  $faqQ.on('click', function () {
-    if (pluge) {
-      // 답변을 보여주자(slide down)
-      $(this).find($faqA).stop().slideDown(duration);
-      pluge = false;
-    } else {
-      // 답변을 감추자(slide up)
-      $(this).find($faqA).stop().slideUp(duration);
-      pluge = true;
-    }
-  });
-
   // $faqQ.on('click', function () {
   //   // 답변을 보여주자(slide down)
   //   $(this).find($faqA).stop().slideDown(duration);
   // });
+
+  // 질문을 클릭했을 때
+  $faqQ.on('click', function () {
+    // 답변을 보여주자(slide down)
+    $(this).find($faqA).stop().slideToggle(duration);
+
+    // 클릭된 li에게 on 클래스 부여
+    // toggleClass를 이용해 add와 remove를 같이 쓸 수 있다
+    $(this).toggleClass('on');
+  });
 });
